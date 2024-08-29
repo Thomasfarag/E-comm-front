@@ -52,7 +52,7 @@ function App() {
       } catch (error) {
         console.error('Token decode error:', error);
         localStorage.removeItem('userToken'); // Remove invalid token
-        setUserData(null); // Clear userData if there's an error
+        return <Navigate to={'/login'} />; // Redirect to login page
       }
     } else {
       setUserData(null);
@@ -68,7 +68,7 @@ function App() {
   const routers = createHashRouter([
     {
       path: '',
-      element: userData ? <Layout logout={logout} userData={userData} /> : <Navigate to="/login" />,
+      element: <Layout logout={logout} userData={userData} />,
       children: [
         { index: true, element: <ProdctedRoute><Home /></ProdctedRoute> },
         { path: 'products', element: <ProdctedRoute><Products /></ProdctedRoute> },

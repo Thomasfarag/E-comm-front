@@ -31,7 +31,7 @@ export default function AllOrders() {
                   <h2 className='text-main fw-bold font-sm'>Client Name:{order?.user?.name}</h2>
                   <div className="text-center">
                     <h4>Total Price:{order?.totalOrderPrice}</h4>
-                    <h6>phone:{order?.user?.phone}</h6>
+                    {/* <h6>phone:{order?.user?.phone}</h6> */}
                     <p className='text-muted'> Payment Method:{order?.paymentMethodType}</p>
                   </div>
                 </div>
