@@ -1,0 +1,25 @@
+.fixedButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+  
+  .fixedButton:hover {
+    transform: scale(1.1);
+  }
+  
+  .fixedButton a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .fixedButton a i {
+    font-size: 40px; /* Increased size */
+  }
+  
