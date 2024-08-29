@@ -10,23 +10,30 @@ export function CartContextProvider(props){
     const [numOfCartItems, setnumOfCartItem] = useState(0)
 
 
-   async function getLCart(){
-    try {
-       let response= await getLoggedUserCart();
-        if (response?.data?.message==='Done') {
-            console.log(response?.data?.cart?._id+"wwww");
-            setnumOfCartItem(response?.data?.cart?.numOfCartItems)
-            setcartId(response?.data?.cart?._id)
+    async function getLCart() {
+      try {
+        let response = await getLoggedUserCart();
+        
+        if (response?.data?.message === 'Done' && response?.data?.cart) {
+          const cartId = response.data.cart._id;
+          
+          // Check if cartId is not null or undefined
+          if (cartId) {
+            console.log(cartId + " dddd");
+            setnumOfCartItem(response.data.cart.numOfCartItems || 0);  // Set default value to 0 if undefined
+            setcartId(cartId);
+          } else {
+            console.warn('Cart ID is null or undefined');
+          }
+        } else {
+          console.warn('Response message not "Done" or cart is missing');
         }
-    } catch (error) {
-      
-        console.error('Error in updateCartquantity:', error.response ? error.response.data : error.message);
+      } catch (error) {
+        console.error('Error in getLCart:', error.response ? error.response.data : error.message);
         throw error;
-      
+      }
     }
-       
-        // console.log(response);
-    }
+    
 
 useEffect(() => {
 
